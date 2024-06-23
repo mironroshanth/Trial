@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>61-Key Piano Emulation</title>
+<style>
+/* Insert CSS styles here */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+.piano {
+  position: relative; /* Position relative for absolute positioning of keys */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* Align keys to the bottom */
+  width: 800px; /* Adjust as needed */
+  margin-bottom: 20px; /* Space between piano and audio controls */
+}
+
+.key {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+  border: 1px solid #000;
+  cursor: pointer;
+  position: relative; /* Ensure relative positioning for all keys */
+  z-index: 1; /* Ensure white keys are above black keys */
+}
+
+.white {
+  background-color: #fff;
+  width: 40px;
+  height: 160px;
+}
+
+.black {
+  background-color: #000;
+  color: #fff;
+  position: absolute;
+  top: -3px; /* Adjust to position above white keys */
+  left: 0;
+  width: 25px;
+  height: 100px; /* Shorter height for black keys */
+  z-index: 2; /* Black keys above white keys */
+  cursor: pointer;
+}
+
+.black:before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 80px;
+  background-color: #000;
+}
+
+.black[data-note="Db"] {
+  left: 285px; /* Adjust position of black keys */
+}
+
+.black[data-note="Eb"] {
+  left: 325px; /* Adjust position of black keys */
+}
+
+.black[data-note="Gb"] {
+  left: 410px; /* Adjust position of black keys */
+}
+
+.black[data-note="Ab"] {
+  left: 450px; /* Adjust position of black keys */
+}
+
+.black[data-note="Bb"] {
+  left: 490px; /* Adjust position of black keys */
+}
+</style>
+</head>
+<body>
+<div class="piano">
+
+    <div data-note="C" class="key white" onclick="playSound('C')">C</div>
+    <div data-note="Db" class="key black" onclick="playSound('Db')">Db</div>
+    <div data-note="D" class="key white" onclick="playSound('D')">D</div>
+    <div data-note="Eb" class="key black" onclick="playSound('Eb')">Eb</div>
+    <div data-note="E" class="key white" onclick="playSound('E')">E</div>
+    <div data-note="F" class="key white" onclick="playSound('F')">F</div>
+    <div data-note="Gb" class="key black" onclick="playSound('Gb')">Gb</div>
+    <div data-note="G" class="key white" onclick="playSound('G')">G</div>
+    <div data-note="Ab" class="key black" onclick="playSound('Ab')">Ab</div>
+    <div data-note="A" class="key white" onclick="playSound('A')">A</div>
+    <div data-note="Bb" class="key black" onclick="playSound('Bb')">Bb</div>
+    <div data-note="B" class="key white" onclick="playSound('B')">B</div>
+  <!-- Repeat for all other keys -->
+</div>
+<audio id="audio"></audio>
+
+<script src="script.js"></script>
+</body>
+</html>
